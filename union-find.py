@@ -17,6 +17,14 @@
 #       - Merge: Given two elements, merge the sets that they are a part of.
 #       - Add: Add a new element to the Map(by default it maps to itself)
 
+# The Scipy implementation has the below API:
+#   add (x) -> add to disjoint set
+#   merge(x,y) -> merge the subsets of x and y
+#   connected(x,y) -> test if x and y are in same subset
+#   subset(x) -> get subset containing x
+#   subsets() -> get all subsets in disjoint set
+#  __getitem__(x) -> find the root element of x
+#
 import numpy as np
 import scipy as sc
 
