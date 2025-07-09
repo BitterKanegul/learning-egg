@@ -17,4 +17,12 @@
 #       - Merge: Given two elements, merge the sets that they are a part of.
 #       - Add: Add a new element to the Map(by default it maps to itself)
 
-import numpy
+import numpy as np
+import scipy as sc
+
+
+# Inputs are (id, data)
+# We need the ids to be partially ordered so that we can choose the 'better' one as our canonical representative.
+# We can either take human input id or generate from data. For this purpose we take human input.
+# An implementation of the Disjoint Set is present in https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.DisjointSet.html
+#
