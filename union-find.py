@@ -29,8 +29,27 @@ import numpy as np
 import scipy as sc
 
 
+
 # Inputs are (id, data)
 # We need the ids to be partially ordered so that we can choose the 'better' one as our canonical representative.
 # We can either take human input id or generate from data. For this purpose we take human input.
 # An implementation of the Disjoint Set is present in https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.DisjointSet.html
+# These guys do it in a general way, any Python object can be part of it (probably ones that can be hashed)
+
+
+#Using the backing store as a Hashmap:
+#  key is the item, value is the parent
+#  add(x) is almost O(1)
+#  merge(x,y) is : x.parent == y.parent == max(x.parent, y.parent)
+#  one must also store the cardinality of the subset if we are using maximize cardinality as our criterion
+#
+
+
+
+
+
+
+# Some of the implementation techniques I see from other places:
+# Scipy uses the path halving variant for find (__getitem__)
+#   Merge by Size is used in the merge method.
 #
