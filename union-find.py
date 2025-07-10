@@ -53,6 +53,7 @@ class MyDisjointSet:
 
     def __init__(self):
         self.__HM__ = dict()
+        self.__size__=dict()
 
     def __getitem__(self, x):
         if x not in self.__HM__:
@@ -66,9 +67,22 @@ class MyDisjointSet:
     def add(self, x):
         if x in self.__HM__:
             return
-
+        self.__HM__[x] = x
+        self.__size__[x] = 1;
+        return self.__HM__[x]
 
     def merge(self, x, y):
+        parent_x = self.__getitem__(x)
+        parent_y = self.__getitem__(y)
+        #we ensure that the size of the subset is stored as __size__[parent] = subset_size
+        size_x = self.__size__[parent_x]
+        size_y = self.__size__[parent_y]
+        if size_x > size_y:
+            self.__HM__[parent_y] = parent_x
+            self.__size__[parent_x] = size_x + size_y
+        else:
+            self.__HM__[parent_x] = parent_y
+            self.__size__[parent_y] = size_x + size_y
 
     def connected(self, x, y):
 
