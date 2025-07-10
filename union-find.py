@@ -124,6 +124,8 @@ print(test.__getitem__('b'))
 test.merge('a', 'b')
 print(test.__getitem__('a'))
 print(test.__getitem__('b'))
+test.add('c')
+print(test.subsets())
 
 
 # =====================================================================
