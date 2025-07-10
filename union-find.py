@@ -115,3 +115,17 @@ class MyDisjointSet:
 # Scipy uses the path halving variant for find (__getitem__)
 #   Merge by Size is used in the merge method.
 #
+
+test = MyDisjointSet()
+test.add('a')
+test.add('b')
+print(test.__getitem__('a'))
+print(test.__getitem__('b'))
+test.merge('a', 'b')
+print(test.__getitem__('a'))
+print(test.__getitem__('b'))
+
+
+# =====================================================================
+# TEST HARNESS
+# =====================================================================
