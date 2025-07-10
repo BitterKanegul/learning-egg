@@ -42,10 +42,39 @@ import scipy as sc
 #  add(x) is almost O(1)
 #  merge(x,y) is : x.parent == y.parent == max(x.parent, y.parent)
 #  one must also store the cardinality of the subset if we are using maximize cardinality as our criterion
-#
+# __getitem__(x) + path halving should be O(1) with a hash map + getting the parent + swapping parent
+# connected(x,y) will be __getitem(x)__ ?= __getitem(y)__
+# subset(x): -> we hit each item in the hashmap and check __getitem(i)__== __getitem(x)__
+# subsets(): -> we hit each item, and add each parent to a hashset
+#  scipy does the connected thing with the help of linked lists.
 
 
+class MyDisjointSet:
 
+    def __init__(self):
+        self.__HM__ = dict()
+
+    def __getitem__(self, x):
+        if x not in self.__HM__:
+            raise KeyError(x)
+        parent = x
+        while parent != self.__HM__[parent]:
+            self.__HM__[parent] = self.__HM__[ self.__HM__[parent]]
+            parent = self.__HM__[parent]
+        return parent
+
+    def add(self, x):
+        if x in self.__HM__:
+            return
+
+
+    def merge(self, x, y):
+
+    def connected(self, x, y):
+
+    def subset(self, x):
+
+    def subsets(self):
 
 
 
