@@ -85,8 +85,17 @@ class MyDisjointSet:
             self.__size__[parent_y] = size_x + size_y
 
     def connected(self, x, y):
+        return self.__getitem__(x) == self.__getitem__(y)
 
     def subset(self, x):
+        #Here i am a little lazy and don't store a linked list among the different subsets, instead going over the entire Disjoint set
+        subset = []
+        parent_x = self.__getitem__(x)
+        for e in self.__HM__:
+            parent_e = self.__getitem__(e)
+            if parent_e == parent_x:
+                subset.append(e)
+        return subset
 
     def subsets(self):
 
