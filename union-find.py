@@ -89,15 +89,25 @@ class MyDisjointSet:
 
     def subset(self, x):
         #Here i am a little lazy and don't store a linked list among the different subsets, instead going over the entire Disjoint set
-        subset = []
+        subset_list = []
         parent_x = self.__getitem__(x)
         for e in self.__HM__:
             parent_e = self.__getitem__(e)
             if parent_e == parent_x:
-                subset.append(e)
-        return subset
+                subset_list.append(e)
+        return subset_list
 
     def subsets(self):
+        #Create a hashmap with the parent as key, and a list containing the subset
+        subset_dict ={}
+        for e in self.__HM__:
+            parent_e = self.__getitem__(e)
+            if parent_e not in subset_dict:
+                 subset_dict[parent_e] = []
+            subset_dict[parent_e].append(e)
+
+        return subset_dict
+
 
 
 
