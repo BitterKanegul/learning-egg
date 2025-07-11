@@ -154,5 +154,15 @@ def test_idempotence ():
     print(f"subsets: {test.subsets()}")
     assert(len(test.subsets()) == 1)
     assert(test.subsets()['x'][0]=='x')
+def test_single_set ():
+    test = MyDisjointSet()
+    for i in range(1000):
+        test.add(i)
+    for i in range(1000-1):
+        test.merge(i,i+1)
+    print(f"subsets: {test.subsets()}")
+    assert(len(test.subsets()) == 1)
+    #assert(test.subsets()['x'][0]=='x')
 
 test_idempotence()
+test_single_set()
