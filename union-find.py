@@ -27,6 +27,7 @@
 #
 import numpy as np
 import scipy as sc
+from operator import length_hint
 
 
 
@@ -139,3 +140,19 @@ print(test.subsets())
 # idempotence disjoint.add(x) 1M times,  disjoint.merge(x,x) 1M times.
 # disjointness test,  given random merges, test that the subsets don't contain any dupes
 # compare with scipy too.
+
+
+# Gonna have to do some profiling as well : https://docs.python.org/3/library/profile.html
+# Pretty dang slow
+
+def test_idempotence ():
+    test = MyDisjointSet()
+    for i in range(1000000):
+        test.add('x')
+    for i in range(1000000):
+        test.merge('x','x')
+    print(f"subsets: {test.subsets()}")
+    assert(len(test.subsets()) == 1)
+    assert(test.subsets()['x'][0]=='x')
+
+test_idempotence()
