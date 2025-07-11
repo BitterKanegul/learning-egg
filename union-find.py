@@ -170,8 +170,19 @@ def test_modulo_set (modulus):
         test.merge(i, i% modulus)
     # print(f"subsets: {test.subsets()}")
     assert(len(test.subsets()) == modulus)
+def test_modulo_set2 (modulus):
+    test = MyDisjointSet()
+    for i in range(1000):
+        test.add(i)
+    for i in range(1000):
+        if i - modulus >= 0:
+            test.merge(i, i-modulus)
+    print(f"subsets: {test.subsets()}")
+    assert(len(test.subsets()) == modulus)
 
 test_idempotence()
 test_single_set()
 test_modulo_set(7)
 test_modulo_set(42)
+test_modulo_set2(7)
+test_modulo_set2(42)
