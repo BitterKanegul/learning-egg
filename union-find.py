@@ -131,3 +131,11 @@ print(test.subsets())
 # =====================================================================
 # TEST HARNESS
 # =====================================================================
+#       - Randomly generate input array and sequence of unions among them. Upto a million
+#       - Correctness testcases, idempotence, reflexivity, disjointness
+#           - exhaustive
+#           - randomized
+
+# idempotence disjoint.add(x) 1M times,  disjoint.merge(x,x) 1M times.
+# disjointness test,  given random merges, test that the subsets don't contain any dupes
+# compare with scipy too.
