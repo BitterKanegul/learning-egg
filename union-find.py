@@ -151,7 +151,7 @@ def test_idempotence ():
         test.add('x')
     for i in range(1000000):
         test.merge('x','x')
-    print(f"subsets: {test.subsets()}")
+    # print(f"subsets: {test.subsets()}")
     assert(len(test.subsets()) == 1)
     assert(test.subsets()['x'][0]=='x')
 def test_single_set ():
@@ -160,9 +160,18 @@ def test_single_set ():
         test.add(i)
     for i in range(1000-1):
         test.merge(i,i+1)
-    print(f"subsets: {test.subsets()}")
+    # print(f"subsets: {test.subsets()}")
     assert(len(test.subsets()) == 1)
-    #assert(test.subsets()['x'][0]=='x')
+def test_modulo_set (modulus):
+    test = MyDisjointSet()
+    for i in range(1000):
+        test.add(i)
+    for i in range(1000):
+        test.merge(i, i% modulus)
+    # print(f"subsets: {test.subsets()}")
+    assert(len(test.subsets()) == modulus)
 
 test_idempotence()
 test_single_set()
+test_modulo_set(7)
+test_modulo_set(42)
